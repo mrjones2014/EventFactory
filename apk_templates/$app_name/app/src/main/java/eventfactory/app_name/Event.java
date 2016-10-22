@@ -4,25 +4,22 @@ import java.text.ParseException;
 
 import com.google.gson.Gson;
 
-public class Event extends Occasion{
+public class Event {
     private boolean isSubscribed;
     private TimeDate time;
     private String name;
     private String description;
     private String location;
 
-    public Event(String name, String description, String startSource, String endSource) throws ParseException{
+    public Event(String name, String description, String location, String startSource, String endSource) throws ParseException{
+        //super();
         isSubscribed = true;
         this.description = description;
+        this.location = location;
         this.name = name;
-        this.time = new TimeDate();
-        time.setStartDate(startSource);
-        time.setEndDate(endSource);
-    }
-
-    public static Event fromJson(String json){
-        Gson gson = new Gson();
-        return gson.fromJson(json, Event.class);
+        this.time = new TimeDate(startSource, endSource);
+        //time.setStartDate(startSource);
+        //time.setEndDate(endSource);
     }
 
     //basic getters,setters
@@ -50,12 +47,5 @@ public class Event extends Occasion{
     public void setName(String name){
         this.name = name;
     }
-    public void setDescription(String description){
-        this.description = description;
-    }
-
-    public String toJSON(){
-        Gson gson = new Gson();
-        return gson.toJson(this);
-    }
+    public void setDescription(String description){ this.description = description; }
 }

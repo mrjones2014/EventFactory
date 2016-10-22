@@ -6,8 +6,6 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.webapp.WebAppContext;
 
-import eventfactory.model.Event;
-import eventfactory.model.Occasion;
 
 public class Main {
 

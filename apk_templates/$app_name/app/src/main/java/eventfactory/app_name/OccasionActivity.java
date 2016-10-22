@@ -2,44 +2,49 @@ package eventfactory.app_name;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.AbsListView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
-
-import java.io.File;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.MissingResourceException;
 
 public class OccasionActivity extends AppCompatActivity {
-    Occasion occasion;
-    TableLayout eventsTable;
+    private Occasion occasion;
+    private TableLayout eventsTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_occasion);
         eventsTable = (TableLayout) findViewById(R.id.eventsTable);
-        loadEvents();
+        try {
+            loadEvents();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         populateEventTable();
     }
 
-    public void loadEvents() throws FileNotFoundException, MissingResourceException {
+    public void loadEvents() throws FileNotFoundException, MissingResourceException, JSONException, ParseException {
         /*File eventsFile = new File("events.json");
         if(!eventsFile.exists()) throw new MissingResourceException("Resource \"events.json\" missing. ", "OccasionActivity","events.json");
         else{*/
-            Gson gson = new Gson();
-            occasion = gson.fromJson("{\"name\":\"test name\",\"location\":\"test loc\",\"startSource\":\"102120162100\",\"endSource\":\"102320161300\",{\"events\":[{\"name\":\"test name\",\"description\":\"test desc\",\"location\":\"test loc\",\"startSource\":\"102120162100\",\"endSource\":\"102320161300\"]}"/*new FileReader("events.json")*/, Occasion.class);
+            JSONObject jsonObj = new JSONObject("{\"oname\":\"test name\",\"olocation\":\"test loc\",\"startSource\":\"102120162100\",\"endSource\":\"102320161300\",\"events\":[{\"name\":\"test name\",\"description\":\"test desc\",\"location\":\"test loc\",\"startSource\":\"102120162100\",\"endSource\":\"102320161300\"}]}");
+            occasion = new Occasion((String)jsonObj.get("oname"), (String)jsonObj.get("olocation"), (String)jsonObj.get("startSource"), (String)jsonObj.get("endSource"));
+        JSONArray eventsJson = jsonObj.getJSONArray("events");
+        for(int i = 0; i < eventsJson.length(); i ++){
+            JSONObject singleEventJson = eventsJson.getJSONObject(i);
+            Event e = new Event(singleEventJson.getString("name"), singleEventJson.getString("description"), singleEventJson.getString("location"), singleEventJson.getString("startSource"), singleEventJson.getString("endSource"));
+            occasion.getEvents().add(e);
+        }
         /*}*/
     }
-
+    //{"name":"test name","location":"test loc","startSource":"102120162100","endSource":"102320161300",{"events":[{"name":"test name","description":"test desc","location":"test loc","startSource":"102120162100","endSource":"102320161300"]}
     public void populateEventTable(){
         for(int i = 0; i < occasion.getEvents().size(); i ++){
             TableRow newRow = new TableRow(this);
@@ -79,6 +84,6 @@ public class OccasionActivity extends AppCompatActivity {
             hour -= 12;
         } else if(hour == 12) isAm = false;
 
-        return isAm ? hour + ":" + minute + "AM" : hour + ":" + minute + "PM";
+        return isAm ? hour + ":" + new DecimalFormat("00").format(minute) + "AM" : hour + ":" + new DecimalFormat("00").format(minute) + "PM";
     }
 }

@@ -11,8 +11,11 @@ public class TimeDate {
 	private String startSource;
 	private String endSource;
 	
-	public TimeDate(){
+	public TimeDate(String startSource, String endSource) throws ParseException {
 		formatTime = new SimpleDateFormat("MMddyyyyHHmm");
+        this.setStartDate(startSource);
+        this.setEndDate(endSource);
+
 	}
 	//getters for specific substrings of the dates
 	public int getStartMonth(){

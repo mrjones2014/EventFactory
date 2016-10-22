@@ -10,16 +10,14 @@ public class Occasion {
     private TimeDate otime;
     private String olocation;
     private String oname;
-    public Occasion(){
 
-    }
     public Occasion(String name, String location, String startSource, String endSource) throws ParseException{
         events = new ArrayList<Event>();
-        this.otime = new TimeDate();
+        this.otime = new TimeDate(startSource, endSource);
         this.setName(name);
         this.olocation = location;
-        otime.setStartDate(startSource);
-        otime.setEndDate(endSource);
+        //otime.setStartDate(startSource);
+        //otime.setEndDate(endSource);
         //time.setStartDate("102120162100");
         //time.setEndDate("102320161300");
     }
