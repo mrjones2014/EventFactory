@@ -30,6 +30,10 @@
 							</th>
 							
 							<th>
+								<label>Description</label>
+							</th>
+							
+							<th>
 								<label>Start Date</label>
 							</th>
 							
@@ -48,6 +52,14 @@
 						<tr>
 							<td>
 								<input type="text" name="ename" required>
+							</td>
+							
+							<td>
+								<input type="text" name="desc" required>
+							</td>
+							
+							<td>
+								<input type="text" name="loc" required>
 							</td>
 							
 							<td>

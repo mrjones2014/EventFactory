@@ -27,9 +27,10 @@ public class EventPlannerServlet extends HttpServlet {
 			String startTime = req.getParameter("stime");
 			String endDate = req.getParameter("edate");
 			String endTime  = req.getParameter("etime");
+			String description = req.getParameter("desc");
 			
 			try {
-				Event event = new Event(name, location, startDate+startTime, endDate+endTime);
+				Event event = new Event(name, location, description, startDate+startTime, endDate+endTime);
 				req.getSession().setAttribute("event", event);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block

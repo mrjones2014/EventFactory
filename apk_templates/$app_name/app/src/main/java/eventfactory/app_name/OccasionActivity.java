@@ -27,17 +27,17 @@ public class OccasionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_occasion);
         eventsTable = (TableLayout) findViewById(R.id.eventsTable);
-        //loadEvents();
+        loadEvents();
         populateEventTable();
     }
 
     public void loadEvents() throws FileNotFoundException, MissingResourceException {
-        File eventsFile = new File("events.json");
+        /*File eventsFile = new File("events.json");
         if(!eventsFile.exists()) throw new MissingResourceException("Resource \"events.json\" missing. ", "OccasionActivity","events.json");
-        else{
+        else{*/
             Gson gson = new Gson();
-            occasion = gson.fromJson(new FileReader("events.json"), Occasion.class);
-        }
+            occasion = gson.fromJson("{\"name\":\"test name\",\"location\":\"test loc\",\"startSource\":\"102120162100\",\"endSource\":\"102320161300\",{\"events\":[{\"name\":\"test name\",\"description\":\"test desc\",\"location\":\"test loc\",\"startSource\":\"102120162100\",\"endSource\":\"102320161300\"]}"/*new FileReader("events.json")*/, Occasion.class);
+        /*}*/
     }
 
     public void populateEventTable(){
