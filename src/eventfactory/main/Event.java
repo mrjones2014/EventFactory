@@ -7,6 +7,7 @@ public class Event extends Occasion{
 	private TimeDate time;
 	private String name;
 	private String description;
+	private String location;
 	public Event(String name, String description, String startSource, String endSource) throws ParseException{
 		isSubscribed = true;
 		this.description = description;
@@ -15,6 +16,7 @@ public class Event extends Occasion{
 		time.setStartDate(startSource);
 		time.setEndDate(endSource);
 	}
+
 	
 	
 	//basic getters,setters
@@ -29,6 +31,12 @@ public class Event extends Occasion{
 	}
 	public String getDescription(){
 		return description;
+	}
+	public String getLocation(){
+		return location;
+	}
+	public void setLocation(String loc){
+		this.location = loc;
 	}
 	public void setSubscribed(boolean status){
 		this.isSubscribed = status;
