@@ -32,5 +32,10 @@
 	<classpathentry kind="lib" path="lib/javax.el_2.1.0.v201004190952.jar"/>
 	<classpathentry kind="lib" path="lib/javax.servlet.jsp_2.1.0.v201004190952.jar"/>
 	<classpathentry kind="lib" path="lib/javax.servlet.jsp.jstl_1.2.0.v201004190952.jar"/>
+	<classpathentry kind="lib" path="lib/com.sun.el_1.0.0.v201004190952.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-annotations-2.2.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-2.2.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-databind-2.2.3.jar"/>
+	<classpathentry kind="lib" path="lib/ecj-3.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
