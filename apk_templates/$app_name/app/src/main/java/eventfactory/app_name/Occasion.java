@@ -1,63 +1,60 @@
 package eventfactory.app_name;
 
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Collection;
+
+import com.google.gson.Gson;
 
 public class Occasion {
-    private String title, description, location;
     private ArrayList<Event> events;
+    private TimeDate time;
+    private String location;
+    private String name;
+    public Occasion(){
 
-    public Occasion(String title, String description, String location){
-        this.title = title;
-        this.description = description;
+    }
+    public Occasion(String name, String location, String startSource, String endSource) throws ParseException{
+        events = new ArrayList<Event>();
+        this.time = new TimeDate();
+        this.setName(name);
         this.location = location;
-        this.events = new ArrayList<>();
+        time.setStartDate(startSource);
+        time.setEndDate(endSource);
+        //time.setStartDate("102120162100");
+        //time.setEndDate("102320161300");
     }
 
-    public Occasion(String title, String description, String location, ArrayList<Event> events){
-        this.title = title;
-        this.description = description;
-        this.location = location;
-        this.events = events;
+    public static Occasion fromJson(String json){
+        Gson gson = new Gson();
+        return gson.fromJson(json, Occasion.class);
     }
 
-    public void addEvent(Event e){
-        events.add(e);
+    public ArrayList<Event> getEvents(){
+        return this.events;
     }
-
-    public void addAllEvents(Collection<Event> e){
-        events.addAll(e);
+    public TimeDate getTime(){
+        return this.time;
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getLocation() {
+    public String getLocation(){
         return location;
     }
-
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocation(String loc){
+        this.location = loc;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public ArrayList<Event> getEvents() {
-        return events;
+    public String toJSON(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 
-    public void setEvents(ArrayList<Event> events) {
-        this.events = events;
+    public String eventListAsJSON(){
+        Gson gson = new Gson();
+        return gson.toJson(events.toArray());
     }
 }

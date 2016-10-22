@@ -1,66 +1,61 @@
 package eventfactory.app_name;
 
-import java.util.Date;
+import java.text.ParseException;
 
-public class Event {
-    private Date start, end;
-    private String name, description, location;
-    private Boolean isSubscribed;
+import com.google.gson.Gson;
 
-    public Event(Date start, Date end, String name, String description, String location, Boolean isSubscribed){
-        this.start = start;
-        this.end = end;
-        this.name = name;
+public class Event extends Occasion{
+    private boolean isSubscribed;
+    private TimeDate time;
+    private String name;
+    private String description;
+    private String location;
+
+    public Event(String name, String description, String startSource, String endSource) throws ParseException{
+        isSubscribed = true;
         this.description = description;
-        this.location = location;
-        this.isSubscribed = isSubscribed;
+        this.name = name;
+        this.time = new TimeDate();
+        time.setStartDate(startSource);
+        time.setEndDate(endSource);
     }
 
-    public Date getStart() {
-        return start;
+    public static Event fromJson(String json){
+        Gson gson = new Gson();
+        return gson.fromJson(json, Event.class);
     }
 
-    public void setStart(Date start) {
-        this.start = start;
+    //basic getters,setters
+    public boolean isSubscribed(){
+        return this.isSubscribed;
     }
-
-    public Date getEnd() {
-        return end;
+    public TimeDate getTime(){
+        return time;
     }
-
-    public void setEnd(Date end) {
-        this.end = end;
-    }
-
-    public String getName() {
+    public String getName(){
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
+    public String getDescription(){
         return description;
     }
-
-    public void setDescription(String description) {
+    public String getLocation(){
+        return location;
+    }
+    public void setLocation(String loc){
+        this.location = loc;
+    }
+    public void setSubscribed(boolean status){
+        this.isSubscribed = status;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setDescription(String description){
         this.description = description;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public Boolean getIsSubscribed() {
-        return isSubscribed;
-    }
-
-    public void setIsSubscribed(Boolean isSubscribed) {
-        this.isSubscribed = isSubscribed;
+    public String toJSON(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 }
