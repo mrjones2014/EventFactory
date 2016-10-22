@@ -18,7 +18,7 @@
 			<section class="main-content">
 				
 				
-				<table class="ocassion-input">
+				<table class="event-input">
 					<thead>
 						<tr>
 							<th>
