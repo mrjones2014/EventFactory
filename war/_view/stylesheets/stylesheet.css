@@ -11,5 +11,6 @@ thead {
 }
 
 .ocassion-input {
-	align: center;
+	text-align: center;
+	border: 1px;
 }
