@@ -6,10 +6,10 @@
 		 xmlns="http://java.sun.com/xml/ns/javaee">
   
   <!-- Servlets -->
-<!--  <servlet>
+  <servlet>
     <servlet-name>EventPlanner</servlet-name>
-    <servlet-class>eventfactory.servlet.EventPlanner</servlet-class>
-  </servlet> -->
+    <servlet-class>eventfactory.servlet.EventPlannerServlet</servlet-class>
+  </servlet>
   
   <servlet>
     <servlet-name>OccasionPlanner</servlet-name>
@@ -18,10 +18,10 @@
   
   
   <!-- Servlet mappings -->
-<!--  <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EventPlanner</servlet-name>
     <url-pattern>/EventPlanner</url-pattern>
-  </servlet-mapping> -->
+  </servlet-mapping>
 
   <servlet-mapping>
     <servlet-name>OccasionPlanner</servlet-name>
