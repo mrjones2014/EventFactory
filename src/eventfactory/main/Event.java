@@ -1,17 +1,19 @@
 package eventfactory.main;
 import java.text.ParseException;
+import java.util.Date;
 
 public class Event extends Occasion{
 	private boolean isSubscribed;
 	private TimeDate time;
 	private String name;
 	private String description;
-	public Event(String name, String description) throws ParseException{
+	public Event(String name, String description, String startSource, String endSource) throws ParseException{
 		isSubscribed = true;
 		this.description = description;
 		this.name = name;
 		this.time = new TimeDate();
-		
+		time.setStartDate(startSource);
+		time.setEndDate(endSource);
 	}
 	
 	
