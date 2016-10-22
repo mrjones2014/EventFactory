@@ -71,6 +71,9 @@
 								<input type="datetime-local" name="edate" id="edate" required>
 							</td>
 							
+              <td>
+                <input id="remove-event" type="button" value="Remove Event" onclick="eventRemove(this);"/>
+              </td>
 						</tr>
 					</tbody>
 				</table>
@@ -93,25 +96,29 @@
 		    return;
 		}
 		
-		function updateRow(row, i, reset) {
-	
-		    var inp1 = row.cells[0].getElementsByTagName('input')[0];
-		    var inp2 = row.cells[1].getElementsByTagName('input')[0];
-		    var inp3 = row.cells[2].getElementsByTagName('input')[0];
-		    var inp4 = row.cells[3].getElementsByTagName('input')[0];
-		    var inp5 = row.cells[4].getElementsByTagName('input')[0];
-		    inp1.id = row.cells[0].id + i;
-		    inp2.id = row.cells[1].id + i;
-		    inp3.id = row.cells[2].id + i;
-		    inp4.id = row.cells[3].id + i;
-		    inp5.id = row.cells[4].id + i;
-	
-		    if (reset) {
-		        inp1.value = inp2.value = inp3.value = inp4.value = inp5.value = '';
-		    }
+		function updateRow(row, len, reset) {
+				var inputField = [];
+			
+				for (var i =0; i< inputField.length; i++) {
+					inputField[i] = row.cells[i].getElementsByTagName('input')[0];
+					inputField[i].id = row.cells[i].id + len;
+					
+					if(reset) {
+						inputField[i].value = '';
+					}
+				}
 		    return row;
 		}
 	
+		function eventRemove(el) {
+	    var i = el.parentNode.parentNode.rowIndex;
+	    table.deleteRow(i);
+	    while (table.rows[i]) {
+	        updateRow(table.rows[i], i, false);
+	        i++;
+	  	}
+	    return;
+		}
 		
 		</script>
 	</body>
