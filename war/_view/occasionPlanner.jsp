@@ -17,7 +17,7 @@
 		<form action="${pageContext.servletContext.contextPath}/OccasionPlanner" method="post">
 			<section class="main-content">
 				
-				<form>
+				
 				<table class="ocassion-input">
 					<thead>
 						<tr>
@@ -26,19 +26,19 @@
 							</th>
 							
 							<th>
-								<label>Start Date</label>
+								<label>Description</label>
 							</th>
 							
 							<th>
-								<label>Start Time</label>
+								<label>Location</label>
 							</th>
 							
 							<th>
-								<label>End Date</label>
+								<label>Start Date and Time</label>
 							</th>
 							
 							<th>
-								<label>End Time</label>
+								<label>End Date and Time</label>
 							</th>
 							
 							<th>
@@ -58,42 +58,41 @@
 					<tbody>
 						<tr>
 							<td>
-								<input type="text" name="oname">
+								<input type="text" name="oname" required>
 							</td>
 							
 							<td>
-								<input type="date" name="osdate">
+								<input type="text" name="odescription" required>
 							</td>
 							
 							<td>
-								<input type="text" name="ostime">
+								<input type="text" name="oloc" required>
 							</td>
 							
 							<td>
-								<input type="date" name="oedate">
+								<input type="datetime-local" name="osdate" required>
 							</td>
 							
 							<td>
-								<input type="text" name="oetime">
+								<input type="datetime-local" name="oedate" required>
 							</td>
 							
 							<td>
-								<input type="color" name="ocolor">
+								<input type="color" name="ocolor1" required>
 							</td>
 							
 							<td>
-								<input type="color" name="ocolor">
+								<input type="color" name="ocolor2" required>
 							</td>
 							
 							<td>
-								<input type="color" name="ocolor">
+								<input type="color" name="ocolor3" required>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				
-				<input type="submit" value="Submit" />
-				</form>				
+				<input type="submit" value="Submit" />				
 			
 			</section>
 		</form>
