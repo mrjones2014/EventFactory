@@ -14,18 +14,45 @@
 		<section class="page-header">
 			<h1 class="project-name">Event Factory</h1>
 		</section>
-		
-		<section class="main-content">
-			<table border="1">
-				<tr>
-					<td>Row 1, Column 1</td>
-					<td>Row 1, Column 2</td>
-				</tr>
-				<tr>
-					<td>Row 2, Column 1</td>
-					<td>Row 2, Column 2</td>
-				</tr>
-			</table>
-		</section>
+		<form action="${pageContext.servletContext.contextPath}/OccasionPlanner" method="post">
+			<section class="main-content">
+				<table border="0">
+					<tr>
+						<!--<td>Row 1, Column 1</td>
+						<td>Row 1, Column 2</td>-->
+						<td>Event Name</td>
+						<td><input type="text" name="oname"></td>
+					</tr>
+					<tr>
+						<!--<td>Row 2, Column 1</td>
+						<td>Row 2, Column 2</td>-->
+						<td>Event Location</td>
+						<td><input type="text" name="oloc"></td>
+					</tr>
+					<tr>
+						<td>Event Start Date</td>
+						<td><input type="text" name="osdate"></td>
+					</tr>
+					<tr>
+						<td>Event Start Time</td>
+						<td><input type="text" name="ostime"></td>
+					</tr>
+					<tr>
+						<td>Event End Date</td>
+						<td><input type="text" name="oedate"></td>
+					</tr>
+					<tr>
+						<td>Event End Date</td>
+						<td><input type="text" name="oetime"></td>
+					</tr>
+					<tr>
+						<td>Event Color</td>
+						<td><input type="text" name="ocolor"></td>
+					</tr>
+				</table>
+				
+				<input type="submit" value="Submit"></input>
+			</section>
+		</form>
 	</body>
 </html>
