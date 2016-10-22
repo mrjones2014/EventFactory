@@ -27,5 +27,7 @@
 	<classpathentry kind="lib" path="lib/joda-time-2.1.jar"/>
 	<classpathentry kind="lib" path="lib/servlet-api-2.5.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="lib" path="lib/org.apache.jasper.glassfish_2.1.0.v201007080150.jar"/>
+	<classpathentry kind="lib" path="lib/org.apache.taglibs.standard.glassfish_1.2.0.v201004190952.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
