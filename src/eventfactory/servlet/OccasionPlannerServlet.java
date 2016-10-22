@@ -27,9 +27,10 @@ public class OccasionPlannerServlet extends HttpServlet {
 			String startTime = req.getParameter("ostime");
 			String endDate = req.getParameter("oedate");
 			String endTime  = req.getParameter("oetime");
+			String description = req.getParameter("odescription");
 			
 			try {
-				Occasion occasion = new Occasion(name, location, startDate+startTime, endDate+endTime);
+				Occasion occasion = new Occasion(name, location, description, startDate+startTime, endDate+endTime);
 				req.getSession().setAttribute("occasion", occasion);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
