@@ -27,4 +27,13 @@ public class Event extends Occasion{
 	public String getDescription(){
 		return description;
 	}
+	public void setNotification(Notification notification){
+		this.notification = notification;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 }
