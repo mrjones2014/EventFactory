@@ -13,7 +13,7 @@
   
   <servlet>
     <servlet-name>OccasionPlanner</servlet-name>
-    <servlet-class>eventfactory.servlet.OccasionPlanner</servlet-class>
+    <servlet-class>eventfactory.servlet.OccasionPlannerServlet</servlet-class>
   </servlet>  
   
   
