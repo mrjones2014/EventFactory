@@ -76,10 +76,10 @@ public class Occasion {
 			accumulator.concat("{\"startSource\":");
 			accumulator.concat("\"" + this.getEvents().get(i).getTime().getStartAll() + "\",");
 			accumulator.concat("{\"endSource\":");
-			accumulator.concat("\"" + this.getEvents().get(i).getTime().getEndAll() + "\",");
+			accumulator.concat("\"" + this.getEvents().get(i).getTime().getEndAll() + "\"");
 			accumulator.concat("]");
 		}
-		accumulator.concat("]");
+		accumulator.concat("]}");
 		
 		
 		
