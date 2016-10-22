@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+			 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+		 version="2.5"
+		 xmlns="http://java.sun.com/xml/ns/javaee">
+  
+  <!-- Servlets -->
+<!--  <servlet>
+    <servlet-name>EventPlanner</servlet-name>
+    <servlet-class>eventfactory.servlet.EventPlanner</servlet-class>
+  </servlet> -->
+  
+  <servlet>
+    <servlet-name>OccasionPlanner</servlet-name>
+    <servlet-class>eventfactory.servlet.OccasionPlanner</servlet-class>
+  </servlet>  
+  
+  
+  <!-- Servlet mappings -->
+<!--  <servlet-mapping>
+    <servlet-name>EventPlanner</servlet-name>
+    <url-pattern>/EventPlanner</url-pattern>
+  </servlet-mapping> -->
+
+  <servlet-mapping>
+    <servlet-name>OccasionPlanner</servlet-name>
+    <url-pattern>/OccasionPlanner</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
