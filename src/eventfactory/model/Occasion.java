@@ -48,13 +48,47 @@ public class Occasion {
 		this.name = name;
 	}
 	
-	public String toJSON(){
+	public String toJSON(){	
 		Gson gson = new Gson();
 		return gson.toJson(this);
 	}
 	
-	public String eventListAsJSON(){
-		Gson gson = new Gson();
-		return gson.toJson(events.toArray());
+	public String occasionToJSON(){
+		String accumulator = "";
+		accumulator.concat("{\"name\":");
+		accumulator.concat("\"" + this.getName() + "\",");
+		accumulator.concat("{\"location\":");
+		accumulator.concat("\"" + this.getLocation() + "\",");
+		accumulator.concat("{\"startSource\":");
+		accumulator.concat("\"" + this.getTime().getStartAll() + "\",");
+		accumulator.concat("{\"endSource\":");
+		accumulator.concat("\"" + this.getTime().getEndAll() + "\",");
+		accumulator.concat("{\"events\":");
+		accumulator.concat("[");
+		for(int i = 0; i < events.size(); i ++){
+			accumulator.concat("[");
+			accumulator.concat("{\"name\":");
+			accumulator.concat("\"" + this.getEvents().get(i).getName() + "\",");
+			accumulator.concat("{\"description\":");
+			accumulator.concat("\"" + this.getEvents().get(i).getDescription() + "\",");
+			accumulator.concat("{\"location\":");
+			accumulator.concat("\"" + this.getEvents().get(i).getLocation() + "\",");
+			accumulator.concat("{\"startSource\":");
+			accumulator.concat("\"" + this.getEvents().get(i).getTime().getStartAll() + "\",");
+			accumulator.concat("{\"endSource\":");
+			accumulator.concat("\"" + this.getEvents().get(i).getTime().getEndAll() + "\",");
+			accumulator.concat("]");
+		}
+		accumulator.concat("]");
+		
+		
+		
+		
+		
+		return accumulator;
+		
+		
+		//Gson gson = new Gson();
+		//return gson.toJson(events.toArray());
 	}
 }
