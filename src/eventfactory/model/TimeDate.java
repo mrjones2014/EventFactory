@@ -8,6 +8,8 @@ public class TimeDate {
 	private Date startDate;
 	private Date endDate;
 	private SimpleDateFormat formatTime;
+	private String startSource;
+	private String endSource;
 	
 	public TimeDate(){
 		formatTime = new SimpleDateFormat("MMddyyyyHHmm");
@@ -44,11 +46,19 @@ public class TimeDate {
 		return Integer.parseInt(formatTime.format(endDate).substring(10, 12));
 	}
 	
+	public String getStartAll(){
+		return startSource;
+	}
+	public String getEndAll(){
+		return endSource;
+	}
 	
 	public void setStartDate(String source) throws ParseException{
 		startDate = formatTime.parse(source);
+		startSource = source;
 	}
 	public void setEndDate(String source) throws ParseException{
 		endDate = formatTime.parse(source);
+		endSource = source;
 	}
 }
