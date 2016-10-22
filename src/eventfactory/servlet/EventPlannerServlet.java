@@ -8,34 +8,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import eventfactory.model.Occasion;
+import eventfactory.model.Event;
 
-public class OccasionPlannerServlet extends HttpServlet {
+public class EventPlannerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		req.getRequestDispatcher("/_view/occasionPlanner.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/eventPlanner.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			String name = req.getParameter("oname");
-			String location = req.getParameter("oloc");
-			String startDate = req.getParameter("osdate");
-			String startTime = req.getParameter("ostime");
-			String endDate = req.getParameter("oedate");
-			String endTime  = req.getParameter("oetime");
+			String name = req.getParameter("name");
+			String location = req.getParameter("loc");
+			String startDate = req.getParameter("sdate");
+			String startTime = req.getParameter("stime");
+			String endDate = req.getParameter("edate");
+			String endTime  = req.getParameter("etime");
 			
 			try {
-				Occasion occasion = new Occasion(name, location, startDate+startTime, endDate+endTime);
-				req.getSession().setAttribute("occasion", occasion);
+				Event event = new Event(name, location, startDate+startTime, endDate+endTime);
+				req.getSession().setAttribute("event", event);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			resp.sendRedirect("EventPlanner");
 	}
 }
