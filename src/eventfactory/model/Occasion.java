@@ -3,6 +3,8 @@ package eventfactory.model;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import com.google.gson.Gson;
+
 public class Occasion {
 	private ArrayList<Event> events;
 	private TimeDate time;
@@ -21,6 +23,12 @@ public class Occasion {
 		//time.setStartDate("102120162100");
 		//time.setEndDate("102320161300");
 	}
+	
+	public static Occasion fromJson(String json){
+		Gson gson = new Gson();
+		return gson.fromJson(json, Occasion.class);
+	}
+	
 	public ArrayList<Event> getEvents(){
 		return this.events;
 	}
@@ -40,4 +48,13 @@ public class Occasion {
 		this.name = name;
 	}
 	
+	public String toJSON(){
+		Gson gson = new Gson();
+		return gson.toJson(this);
+	}
+	
+	public String eventListAsJSON(){
+		Gson gson = new Gson();
+		return gson.toJson(events.toArray());
+	}
 }
