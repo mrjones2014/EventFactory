@@ -3,7 +3,6 @@ package eventfactory.model;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-import com.google.gson.Gson;
 
 public class Occasion {
 	private ArrayList<Event> events;
@@ -47,15 +46,15 @@ public class Occasion {
 	
 	public String toJSON(){
 		String accumulator = "";
-		accumulator=accumulator.concat("{\"name\":");
+		accumulator=accumulator.concat("{\"oname\":");
 		accumulator=accumulator.concat("\"" + this.getName() + "\",");
-		accumulator=accumulator.concat("\"location\":");
+		accumulator=accumulator.concat("\"olocation\":");
 		accumulator=accumulator.concat("\"" + this.getLocation() + "\",");
 		accumulator=accumulator.concat("\"startSource\":");
 		accumulator=accumulator.concat("\"" + this.getTime().getStartAll() + "\",");
 		accumulator=accumulator.concat("\"endSource\":");
 		accumulator=accumulator.concat("\"" + this.getTime().getEndAll() + "\",");
-		accumulator=accumulator.concat("{\"events\":");
+		accumulator=accumulator.concat("\"events\":");
 		accumulator=accumulator.concat("[");
 		for(int i = 0; i < events.size(); i ++){
 			accumulator=accumulator.concat("{\"name\":");
@@ -67,7 +66,8 @@ public class Occasion {
 			accumulator=accumulator.concat("\"startSource\":");
 			accumulator=accumulator.concat("\"" + this.getEvents().get(i).getTime().getStartAll() + "\",");
 			accumulator=accumulator.concat("\"endSource\":");
-			accumulator=accumulator.concat("\"" + this.getEvents().get(i).getTime().getEndAll() + "\"");
+			accumulator=accumulator.concat("\"" + this.getEvents().get(i).getTime().getEndAll() + "\"}");
+			if(i < events.size() - 1) accumulator=accumulator.concat(",");
 		}
 		accumulator=accumulator.concat("]");
 		accumulator=accumulator.concat("}");

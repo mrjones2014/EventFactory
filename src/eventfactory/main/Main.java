@@ -39,15 +39,12 @@ public class Main {
 		System.out.println("Shutting down...");
 		server.stop();
 		server.join();
-		System.out.println("Server has shut down, exiting");*/
+		System.out.println("Server has shut down, exiting");
+		*/
 		Occasion occasion = new Occasion("test name", "test loc", "test desc", "102120162100", "102320161300");
 		Event event = new Event("test name", "test loc", "test desc", "102120162100", "102320161300");
 		occasion.getEvents().add(event);
-		try{
-			System.out.println("JSON = \n" + occasion.toJSON());
-		} catch (Exception e){
-			e.printStackTrace();
-		}
+		System.out.println("JSON = \n" + occasion.toJSON());
 	}
 
 }
