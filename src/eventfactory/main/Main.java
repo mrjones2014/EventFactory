@@ -6,10 +6,13 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.webapp.WebAppContext;
 
+import eventfactory.model.Event;
+import eventfactory.model.Occasion;
+
 public class Main {
 
 	public static void main(String[] args) throws Exception{
-		Server server = new Server(8081);
+		/*Server server = new Server(8081);
 
 		// Create and register a webapp context
 		WebAppContext handler = new WebAppContext();
@@ -36,7 +39,11 @@ public class Main {
 		System.out.println("Shutting down...");
 		server.stop();
 		server.join();
-		System.out.println("Server has shut down, exiting");
+		System.out.println("Server has shut down, exiting");*/
+		Occasion occasion = new Occasion("test occasion", "test location", "test description", "102120162100", "102320161300");
+		Event event = new Event("test event", "test event location", "test description", "102120162100", "102320161300");
+		occasion.getEvents().add(event);
+		System.out.println(occasion.toJSON());
 	}
 
 }

@@ -10,13 +10,14 @@ public class Event extends Occasion{
 	private String description;
 	private String location;
 	
-	public Event(String name, String description, String startSource, String endSource) throws ParseException{
+	public Event(String name, String location, String description, String startSource, String endSource) throws ParseException{
 		isSubscribed = true;
 		this.description = description;
 		this.name = name;
 		this.time = new TimeDate();
 		time.setStartDate(startSource);
 		time.setEndDate(endSource);
+		this.location = location;
 	}
 
 	public static Event fromJson(String json){

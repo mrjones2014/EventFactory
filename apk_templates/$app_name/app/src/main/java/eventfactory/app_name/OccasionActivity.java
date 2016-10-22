@@ -20,42 +20,52 @@ import java.util.MissingResourceException;
 
 public class OccasionActivity extends AppCompatActivity {
     Occasion occasion;
-    ListView eventListView;
+    TableLayout eventsTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_occasion);
-        eventListView = (ListView) findViewById(R.id.eventListView);
-        populateEventListView();
+        eventsTable = (TableLayout) findViewById(R.id.eventsTable);
+        //loadEvents();
+        populateEventTable();
     }
 
-    public Boolean loadEvents() throws FileNotFoundException, MissingResourceException {
+    public void loadEvents() throws FileNotFoundException, MissingResourceException {
         File eventsFile = new File("events.json");
         if(!eventsFile.exists()) throw new MissingResourceException("Resource \"events.json\" missing. ", "OccasionActivity","events.json");
         else{
             Gson gson = new Gson();
             occasion = gson.fromJson(new FileReader("events.json"), Occasion.class);
         }
-        return true;
     }
 
-    public void populateEventListView(){
-        ArrayList<String> listStringData = new ArrayList<>();
-        for(int i = 0; i < 10;/*occasion.getEvents().size();*/ i++){
-            /*String startTime = formatTimeString(occasion.getEvents().get(i).getTime().getStartHours(), occasion.getEvents().get(i).getTime().getStartMinutes());
-            String endTime = formatTimeString(occasion.getEvents().get(i).getTime().getEndHours(), occasion.getEvents().get(i).getTime().getEndMinutes());
-            String duration = padStringLength(startTime + "-" + endTime, 11);
-            String eventTitle = padStringLength(occasion.getEvents().get(i).getName(), 20);
-            String eventLocation = padStringLength(occasion.getEvents().get(i).getName(), 20);
+    public void populateEventTable(){
+        for(int i = 0; i < occasion.getEvents().size(); i ++){
+            TableRow newRow = new TableRow(this);
+            Event currentEvent = occasion.getEvents().get(i);
+            String startTime = formatTimeString(currentEvent.getTime().getStartHours(), currentEvent.getTime().getStartMinutes());
+            String endTime = formatTimeString(currentEvent.getTime().getEndHours(), currentEvent.getTime().getEndMinutes());
 
-            String fullEventString = duration + eventTitle + eventLocation;*/
-            String fullEventString = padStringLength("7:45AM-9:00AM", 11) + padStringLength("test event", 20) + padStringLength("test location", 20);
-            listStringData.add(fullEventString);
+            TextView tvStart = new TextView(this);
+            tvStart.setText(startTime);
+
+            TextView tvEnd = new TextView(this);
+            tvEnd.setText(endTime);
+
+            TextView tvEventTitle = new TextView(this);
+            tvEventTitle.setText(currentEvent.getName());
+
+            TextView tvEventLocation = new TextView(this);
+            tvEventLocation.setText(currentEvent.getLocation());
+
+            newRow.addView(tvStart);
+            newRow.addView(tvEnd);
+            newRow.addView(tvEventTitle);
+            newRow.addView(tvEventLocation);
+
+            eventsTable.addView(newRow);
         }
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.simple_list_item_1, listStringData);
-        eventListView.setAdapter(arrayAdapter);
     }
 
     public static String padStringLength(String string, int length) {

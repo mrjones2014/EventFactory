@@ -13,24 +13,49 @@
     android:background="@color/colorAccent"
     android:backgroundTint="@color/colorAccent">
 
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/horizontalScrollView">
+    <TableLayout
+        android:stretchColumns="0,1,2,3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/eventsTable">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            >
 
-            <ListView
-                android:layout_width="392dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/eventListView"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/tableRow"/>
-        </LinearLayout>
-    </HorizontalScrollView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Start"
+                android:id="@+id/textView"
+                android:textStyle="bold"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="End"
+                android:id="@+id/textView2"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Event"
+                android:id="@+id/textView3"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Location"
+                android:id="@+id/textView4"
+                android:textStyle="bold"/>
+        </TableRow>
+    </TableLayout>
 </LinearLayout>
