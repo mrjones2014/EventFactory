@@ -1,4 +1,4 @@
-package eventfactory.main;
+package eventfactory.model;
 
 import java.text.ParseException;
 import java.util.ArrayList;

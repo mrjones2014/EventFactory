@@ -1,4 +1,4 @@
-package eventfactory.main;
+package eventfactory.model;
 import java.text.ParseException;
 import java.util.Date;
 
@@ -47,4 +47,5 @@ public class Event extends Occasion{
 	public void setDescription(String description){
 		this.description = description;
 	}
+	
 }

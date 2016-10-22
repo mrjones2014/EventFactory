@@ -1,6 +1,6 @@
 package testerpackage;
 
-import eventfactory.main.Event;
+import eventfactory.model.Event;
 import junit.framework.TestCase;
 
 public class EventTester extends TestCase{

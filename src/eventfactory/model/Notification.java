@@ -1,4 +1,4 @@
-package eventfactory.main;
+package eventfactory.model;
 
 public class Notification {
 	private String type;
