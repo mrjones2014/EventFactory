@@ -1,6 +1,7 @@
 package eventfactory.model;
 import java.text.ParseException;
-import java.util.Date;
+
+import com.google.gson.Gson;
 
 public class Event extends Occasion{
 	private boolean isSubscribed;
@@ -8,6 +9,7 @@ public class Event extends Occasion{
 	private String name;
 	private String description;
 	private String location;
+	
 	public Event(String name, String description, String startSource, String endSource) throws ParseException{
 		isSubscribed = true;
 		this.description = description;
@@ -17,7 +19,10 @@ public class Event extends Occasion{
 		time.setEndDate(endSource);
 	}
 
-	
+	public static Event fromJson(String json){
+		Gson gson = new Gson();
+		return gson.fromJson(json, Event.class);
+	}
 	
 	//basic getters,setters
 	public boolean isSubscribed(){
@@ -48,4 +53,8 @@ public class Event extends Occasion{
 		this.description = description;
 	}
 	
+	public String toJSON(){
+		Gson gson = new Gson();
+		return gson.toJson(this);
+	}
 }
