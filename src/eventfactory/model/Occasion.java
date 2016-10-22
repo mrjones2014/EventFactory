@@ -57,16 +57,7 @@ public class Occasion {
 		accumulator=accumulator.concat("\"events\":");
 		accumulator=accumulator.concat("[");
 		for(int i = 0; i < events.size(); i ++){
-			accumulator=accumulator.concat("{\"name\":");
-			accumulator=accumulator.concat("\"" + this.getEvents().get(i).getName() + "\",");
-			accumulator=accumulator.concat("\"description\":");
-			accumulator=accumulator.concat("\"" + this.getEvents().get(i).getDescription() + "\",");
-			accumulator=accumulator.concat("\"location\":");
-			accumulator=accumulator.concat("\"" + this.getEvents().get(i).getLocation() + "\",");
-			accumulator=accumulator.concat("\"startSource\":");
-			accumulator=accumulator.concat("\"" + this.getEvents().get(i).getTime().getStartAll() + "\",");
-			accumulator=accumulator.concat("\"endSource\":");
-			accumulator=accumulator.concat("\"" + this.getEvents().get(i).getTime().getEndAll() + "\"}");
+			accumulator += this.getEvents().get(i).toJSON();
 			if(i < events.size() - 1) accumulator=accumulator.concat(",");
 		}
 		accumulator=accumulator.concat("]");

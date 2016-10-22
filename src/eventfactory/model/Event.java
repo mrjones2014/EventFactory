@@ -55,7 +55,17 @@ public class Event extends Occasion{
 	}
 	
 	public String toJSON(){
-		Gson gson = new Gson();
-		return gson.toJson(this);
+		String accumulator = "";
+		accumulator=accumulator.concat("{\"name\":");
+		accumulator=accumulator.concat("\"" + this.getName() + "\",");
+		accumulator=accumulator.concat("\"description\":");
+		accumulator=accumulator.concat("\"" + this.getDescription() + "\",");
+		accumulator=accumulator.concat("\"location\":");
+		accumulator=accumulator.concat("\"" + this.getLocation() + "\",");
+		accumulator=accumulator.concat("\"startSource\":");
+		accumulator=accumulator.concat("\"" + this.getTime().getStartAll() + "\",");
+		accumulator=accumulator.concat("\"endSource\":");
+		accumulator=accumulator.concat("\"" + this.getTime().getEndAll() + "\"}");
+		return accumulator;
 	}
 }
