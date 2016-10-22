@@ -26,19 +26,19 @@
 							</th>
 							
 							<th>
-								<label>Start Date</label>
+								<label>Description</label>
 							</th>
 							
 							<th>
-								<label>Start Time</label>
+								<label>Location</label>
 							</th>
 							
 							<th>
-								<label>End Date</label>
+								<label>Start Date and Time</label>
 							</th>
 							
 							<th>
-								<label>End Time</label>
+								<label>End Date and Time</label>
 							</th>
 							
 							<th>
@@ -62,31 +62,31 @@
 							</td>
 							
 							<td>
-								<input type="date" name="osdate" required>
+								<input type="text" name="odescription" required>
 							</td>
 							
 							<td>
-								<input type="time" name="ostime" step="60" required>
+								<input type="text" name="oloc" required>
 							</td>
 							
 							<td>
-								<input type="date" name="oedate" required>
+								<input type="datetime-local" name="osdate" required>
 							</td>
 							
 							<td>
-								<input type="time" name="oetime" step="60" required>
+								<input type="datetime-local" name="oedate" required>
 							</td>
 							
 							<td>
-								<input type="color" name="ocolor" required>
+								<input type="color" name="ocolor1" required>
 							</td>
 							
 							<td>
-								<input type="color" name="ocolor" required>
+								<input type="color" name="ocolor2" required>
 							</td>
 							
 							<td>
-								<input type="color" name="ocolor" required>
+								<input type="color" name="ocolor3" required>
 							</td>
 						</tr>
 					</tbody>
