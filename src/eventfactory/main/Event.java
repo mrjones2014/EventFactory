@@ -5,11 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Event extends Occasion{
-	private Notification notification;
+	private boolean notification;
 	private TimeDate time;
 	private String name;
 	private String description;
-	public Event(String name, String description, Notification notification) throws ParseException{
+	public Event(String name, String description, boolean notification) throws ParseException{
 		this.notification = notification;
 		this.description = description;
 		this.name = name;
@@ -18,7 +18,7 @@ public class Event extends Occasion{
 	
 	
 	//basic getters,setters
-	public Notification getNotification(){
+	public boolean getNotification(){
 		return this.notification;
 	}
 	public TimeDate getTime(){
@@ -30,7 +30,7 @@ public class Event extends Occasion{
 	public String getDescription(){
 		return description;
 	}
-	public void setNotification(Notification notification){
+	public void setNotification(boolean notification){
 		this.notification = notification;
 	}
 	public void setName(String name){

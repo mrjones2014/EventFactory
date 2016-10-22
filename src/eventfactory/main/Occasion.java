@@ -7,7 +7,6 @@ public class Occasion {
 	private ArrayList<Event> events;
 	private TimeDate time;
 	public Occasion() throws ParseException{
-		
 		events = new ArrayList<Event>();
 		this.time = new TimeDate();
 		time.setStartDate("102120162100");

@@ -43,6 +43,8 @@ public class TimeDate {
 	public int getEndMinutes(){
 		return Integer.parseInt(formatTime.format(endDate).substring(10, 12));
 	}
+	
+	
 	public void setStartDate(String source) throws ParseException{
 		startDate = formatTime.parse(source);
 	}
