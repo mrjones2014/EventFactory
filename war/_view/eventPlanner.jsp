@@ -18,7 +18,7 @@
 			<section class="main-content">
 				
 				
-				<table class="ocassion-input">
+				<table class="event-input">
 					<thead>
 						<tr>
 							<th>
@@ -34,15 +34,11 @@
 							</th>
 							
 							<th>
-								<label>Start Date</label>
+								<label>Start Date and Time</label>
 							</th>
 							
 							<th>
-								<label>Start Time</label>
-							</th>
-							
-							<th>
-								<label>End Time</label>
+								<label>End Date and Time</label>
 							</th>
 							
 						</tr>
@@ -63,19 +59,11 @@
 							</td>
 							
 							<td>
-								<input type="date" name="esdate" required>
+								<input type="datetime-local" name="sdate" required>
 							</td>
 							
 							<td>
-								<input type="time" name="estime" required>
-							</td>
-							
-							<td>
-								<input type="date" name="eedate" required>
-							</td>
-							
-							<td>
-								<input type="time" name="eetime" required>
+								<input type="datetime-local" name="edate" required>
 							</td>
 							
 						</tr>
