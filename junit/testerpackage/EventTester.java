@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 public class EventTester extends TestCase {
 	Event testEvent;
 	public EventTester() throws ParseException{
-		testEvent = new Event("Dinner", "Food", "102220160530", "102220160700");
+		testEvent = new Event("Dinner", "Food", "Desc", "102220160530", "102220160700");
 		//this.testEvent = testEvent;
 	}
 	

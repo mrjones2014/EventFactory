@@ -7,19 +7,19 @@ import com.google.gson.Gson;
 
 public class Occasion {
     private ArrayList<Event> events;
-    private TimeDate time;
-    private String location;
-    private String name;
+    private TimeDate otime;
+    private String olocation;
+    private String oname;
     public Occasion(){
 
     }
     public Occasion(String name, String location, String startSource, String endSource) throws ParseException{
         events = new ArrayList<Event>();
-        this.time = new TimeDate();
+        this.otime = new TimeDate();
         this.setName(name);
-        this.location = location;
-        time.setStartDate(startSource);
-        time.setEndDate(endSource);
+        this.olocation = location;
+        otime.setStartDate(startSource);
+        otime.setEndDate(endSource);
         //time.setStartDate("102120162100");
         //time.setEndDate("102320161300");
     }
@@ -33,28 +33,18 @@ public class Occasion {
         return this.events;
     }
     public TimeDate getTime(){
-        return this.time;
+        return this.otime;
     }
     public String getLocation(){
-        return location;
+        return olocation;
     }
     public void setLocation(String loc){
-        this.location = loc;
+        this.olocation = loc;
     }
     public String getName() {
-        return name;
+        return oname;
     }
     public void setName(String name) {
-        this.name = name;
-    }
-
-    public String toJSON(){
-        Gson gson = new Gson();
-        return gson.toJson(this);
-    }
-
-    public String eventListAsJSON(){
-        Gson gson = new Gson();
-        return gson.toJson(events.toArray());
+        this.oname = name;
     }
 }

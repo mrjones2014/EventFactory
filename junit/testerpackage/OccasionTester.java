@@ -9,7 +9,7 @@ public class OccasionTester extends TestCase{
 	Occasion occasionTest;
 	
 	public OccasionTester() throws ParseException{
-		occasionTest = new Occasion("YCPHacks", "Yorktowne Hotel", "102220160530", "112120170700");
+		occasionTest = new Occasion("YCPHacks", "Yorktowne Hotel", "Description", "102220160530", "112120170700");
 	}
 	
 	public void testOccasionName() throws Exception {
