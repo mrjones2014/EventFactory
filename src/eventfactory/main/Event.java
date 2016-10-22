@@ -9,7 +9,10 @@ public class Event extends Occasion{
 	private TimeDate time;
 	private String name;
 	private String description;
-	public Event(){
+	public Event(String name, String description, Notification notification) throws ParseException{
+		this.notification = notification;
+		this.description = description;
+		this.name = name;
 		this.time = new TimeDate();
 	}
 	
