@@ -1,5 +1,5 @@
 package testerpackage;
 import junit.framework.TestCase;
-public class NotificationTester extends TestCase {
+public class ServletTester extends TestCase {
 
 }
