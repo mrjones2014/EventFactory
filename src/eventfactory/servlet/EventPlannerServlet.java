@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import eventfactory.codegeneration.ApkBuilder;
+import eventfactory.model.ApplicationModel;
 import eventfactory.model.Event;
 import eventfactory.model.Occasion;
 
@@ -27,7 +28,7 @@ public class EventPlannerServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			
+
 		String eName;
 		String location;
 		String startDate;
@@ -36,7 +37,7 @@ public class EventPlannerServlet extends HttpServlet {
 		String startTime = new String();
 		String endTime = new String();
 		
-		Occasion occasion = (Occasion) req.getSession().getAttribute("occasion");
+		ApplicationModel occasion =(ApplicationModel) req.getSession().getAttribute("occasion");
 		
 		for(int i = 0; i < Integer.parseInt(req.getParameterValues("rows")[1]); i++)
 		{
@@ -59,12 +60,12 @@ public class EventPlannerServlet extends HttpServlet {
 				startTime = startDate.substring(count - 2, count) + startDate.substring(count - 5, count - 3) + startDate.substring(0, count-6) + startDate.substring(count + 1, count + 3) + startDate.substring(count + 4, count + 6);
 				endTime = endDate.substring(count - 2, count) + endDate.substring(count - 5, count - 3) + endDate.substring(0, count-6) + endDate.substring(count + 1, count + 3) + endDate.substring(count + 4, count + 6);
 				Event event = new Event(eName, location, description, startTime, endTime);
-				occasion.getEvents().add(event);
+				occasion.getOccasion().getEvents().add(event);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 		}
-		String JSON = occasion.toJSON();
+		String JSON = occasion.getOccasion().toJSON();
 		File f = new File("apk_templates/$app_name/app/src/main/assets/JSON.json");
 		//File f = new File("JSON.json");
 		FileWriter file = new FileWriter(f);
@@ -73,11 +74,13 @@ public class EventPlannerServlet extends HttpServlet {
 		file.close();
 		ApkBuilder builder = new ApkBuilder();
 		try {
-			builder.generateAndSignApk(occasion.getName());
+			builder.generateAndSignApk(occasion.getOccasion().getName());
 			req.setAttribute("apkFilePath", builder.getApkFilePath());
-			req.getRequestDispatcher("_view/DownloadApk.jsp").forward(req, resp);
+			req.getRequestDispatcher("/_view/DownloadApk.jsp").forward(req, resp);
 		} catch (Exception e) {
+			e.printStackTrace();
 			req.setAttribute("errorMsg", e.getStackTrace());
 		}
+		
 	}
 }
