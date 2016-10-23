@@ -24,15 +24,12 @@ public class EventPlannerServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
-		String eName = req.getParameter("name");
-		String location;// = req.getParameter("loc");
-		String startDate;// = req.getParameter("edate");
-		String endDate;// = req.getParameter("edate");
-		String description;// = req.getParameter("desc");
-		System.out.println(req.getParameterValues("loc")[0]);
-		//System.out.println(req.getParameterValues("loc")[0]);
-		System.out.println(req.getParameterValues("rows")[1]);
-		//req.getAttribute("num-row");
+		String eName;
+		String location;
+		String startDate;
+		String endDate;
+		String description;
+
 		Occasion occasion = (Occasion) req.getSession().getAttribute("occasion");
 		
 		for(int i = 0; i < Integer.parseInt(req.getParameterValues("rows")[1]); i++)
