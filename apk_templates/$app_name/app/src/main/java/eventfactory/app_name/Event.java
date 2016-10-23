@@ -18,8 +18,6 @@ public class Event {
         this.location = location;
         this.name = name;
         this.time = new TimeDate(startSource, endSource);
-        //time.setStartDate(startSource);
-        //time.setEndDate(endSource);
     }
 
     //basic getters,setters

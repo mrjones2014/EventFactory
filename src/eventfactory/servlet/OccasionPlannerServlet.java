@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import eventfactory.model.ApplicationModel;
 import eventfactory.model.Occasion;
 
 public class OccasionPlannerServlet extends HttpServlet {
@@ -29,6 +30,10 @@ public class OccasionPlannerServlet extends HttpServlet {
 			String endDate = req.getParameter("oedate");
 			String endTime  = req.getParameter("oetime");
 			String description = req.getParameter("odescription");
+			String primaryColor = req.getParameter("ocolor1");
+			String secondaryColor = req.getParameter("ocolor2");
+			String accentColor = req.getParameter("ocolor3");
+			
 			int count = 0;
 			while(true)
 			{
@@ -42,7 +47,10 @@ public class OccasionPlannerServlet extends HttpServlet {
 				startTime = startDate.substring(count - 2, count) + startDate.substring(count - 5, count - 3) + startDate.substring(0, count-6) + startDate.substring(count + 1, count + 3) + startDate.substring(count + 4, count + 6);
 				endTime = endDate.substring(count - 2, count) + endDate.substring(count - 5, count - 3) + endDate.substring(0, count-6) + endDate.substring(count + 1, count + 3) + endDate.substring(count + 4, count + 6);
 				Occasion occasion = new Occasion(name, location, description, startTime, endTime);
-				req.getSession().setAttribute("occasion", occasion);
+				
+				ApplicationModel appTheme = new ApplicationModel(primaryColor, secondaryColor, accentColor, occasion);
+				
+				req.getSession().setAttribute("occasion", appTheme);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

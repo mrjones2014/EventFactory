@@ -123,8 +123,6 @@
 				for (var i =0; i< row.cells.length; i++) {
 					inputField[i] = row.cells[i];
 					
-					/* inputField[i].id = rowCounter; */
-					
 					if(reset) {
 						inputField[i].value = '';
 					}
