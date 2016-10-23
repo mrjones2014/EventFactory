@@ -48,7 +48,14 @@
 							
 						</tr>
 					</thead>
-					
+					<tfoot>
+						<tr>
+							<td>
+								<input type = "hidden" name = "rows" value ="">
+							</td>
+						</tr>
+						
+					</tfoot>
 					<tbody>
 						<tr>
 							<td>
@@ -75,11 +82,17 @@
                 <input id="remove-event" type="button" value="Remove Event" onclick="eventRemove(this);"/>
               </td>
 						</tr>
+						<tr>
+							<td>
+								<input type = "hidden" id="rows" name = "rows" value="1">
+							</td>
+						</tr>
 					</tbody>
 				</table>
 				
 				<input type="submit" value="Submit" onclick="return gatherData();"/>
 				<input id="add-event" type="button" value="Add Event" onclick="eventAdder();"/>
+				<p id="hidden" name="hidden" hidden="true" >1</p>
 				<p id="num-row" name="num-row" hidden="true">1</p>
 				
 			</section>
@@ -99,6 +112,8 @@
 		    
 		    rowCounter = rowCounter + 1;
 		    document.getElementById("num-row").innerHTML = rowCounter;
+		    document.getElementById("rows").value = String(rowCounter);
+		    console.log(rowCounter);
 		    return;
 		}
 		
@@ -126,6 +141,7 @@
 	  	}
 	    rowCounter = rowCounter - 1;
 	    document.getElementById("num-row").innerHTML = rowCounter;
+	    document.getElementById("rows").value = String(rowCounter);
 	    return;
 		}
 		
@@ -137,7 +153,7 @@
 			var sdate = document.getElementsByName("sdate");
 			var edate = document.getElementsByName("edate");
 			
-	    return [name, desc, loc, sdate, edate];
+	    return [name, desc, loc, sdate, edate, rowCounter];
 		}
 		
 		</script>

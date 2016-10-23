@@ -2,6 +2,7 @@ package eventfactory.servlet;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import eventfactory.model.Event;
+import eventfactory.model.Occasion;
 
 public class EventPlannerServlet extends HttpServlet {
 
@@ -22,18 +24,30 @@ public class EventPlannerServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
-		String name = req.getParameter("name");
-		String location = req.getParameter("loc");
-		String startDate = req.getParameter("sdate");
-		String endDate = req.getParameter("edate");
-		String description = req.getParameter("desc");
+		String eName = req.getParameter("name");
+		String location;// = req.getParameter("loc");
+		String startDate;// = req.getParameter("edate");
+		String endDate;// = req.getParameter("edate");
+		String description;// = req.getParameter("desc");
+		System.out.println(req.getParameterValues("loc")[0]);
+		//System.out.println(req.getParameterValues("loc")[0]);
+		System.out.println(req.getParameterValues("rows")[1]);
+		//req.getAttribute("num-row");
+		Occasion occasion = (Occasion) req.getSession().getAttribute("occasion");
 		
-		try {
-			Event event = new Event(name, location, description, startDate, endDate);
-			req.getSession().setAttribute("event", event);
-		} catch (ParseException e) {
-			e.printStackTrace();
+		for(int i = 0; i < Integer.parseInt(req.getParameterValues("rows")[1]); i++)
+		{
+			eName = req.getParameterValues("name")[i];
+			location = req.getParameterValues("loc")[i];
+			startDate = req.getParameterValues("sdate")[i];
+			endDate = req.getParameterValues("edate")[i];
+			description = req.getParameterValues("desc")[i];
+			try {
+				Event event = new Event(eName, location, description, startDate, endDate);
+				occasion.getEvents().add(event);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
-	
 	}
 }
