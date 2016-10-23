@@ -9,6 +9,7 @@ import java.security.GeneralSecurityException;
 import kellinwood.security.zipsigner.ZipSigner;
 
 public class ApkBuilder {
+	public ApkBuilder() {}
 	
 	public void generateAndSignApk(String appName) throws Exception{
 		Runtime rt = Runtime.getRuntime();

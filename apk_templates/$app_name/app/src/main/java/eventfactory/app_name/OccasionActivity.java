@@ -129,6 +129,7 @@ public class OccasionActivity extends AppCompatActivity {
             isAm = false;
             hour -= 12;
         } else if(hour == 12) isAm = false;
+        else if(hour == 0) hour+=12;
 
         return isAm ? hour + ":" + new DecimalFormat("00").format(minute) + "AM" : hour + ":" + new DecimalFormat("00").format(minute) + "PM";
     }
