@@ -31,11 +31,11 @@
 							</th>
 							
 							<th>
-								<label>Location</label>
+								<label>Description</label>
 							</th>
 							
 							<th>
-								<label>Description</label>
+								<label>Location</label>
 							</th>
 							
 							<th>
@@ -55,8 +55,8 @@
 								<input type="text" name="name" id="name" required>
 							</td>
 							
-							<td>
-								<input type="text" name="desc" id="desc" required>
+ 							<td>
+								<textarea cols="20" rows="2" name="desc" id="desc" ></textarea>
 							</td>
 							
 							<td>
