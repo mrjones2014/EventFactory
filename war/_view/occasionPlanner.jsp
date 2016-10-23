@@ -14,11 +14,24 @@
 		<section class="page-header">
 			<h1 class="project-name">Event Factory</h1>
 		</section>
+		
+		<div class="occasion-info">
+			<h3 class="welcome">Welcome Event Organizers!</h3>
+			
+			<p>
+			Planning an occasion and want there to be an easy to use interface for your various events? Then
+		  look no further! Holy cow, have we got the solution for you! Event Factory will create a configurable,
+			unique Android application for you to distribute to your attending guests. How hard is creating an application 
+			through Event Factory, you may ask? About as hard as typing out your itinerary! Our advanced infrastructure performs all
+			the hard parts for you. Leaving you with more time to plan your occasions!
+			</p>
+		</div>
+		
 		<form action="${pageContext.servletContext.contextPath}/OccasionPlanner" method="post">
 			<section class="main-content">
 				
 				
-				<table class="ocassion-input">
+				<table class="occasion-input">
 					<thead>
 						<tr>
 							<th>
