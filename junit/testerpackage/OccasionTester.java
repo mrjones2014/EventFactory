@@ -53,5 +53,9 @@ public class OccasionTester extends TestCase{
 		assertEquals("102320160930", occasionTest.getEvents().get(1).getTime().getEndAll());
 		assertEquals("102320161330", occasionTest.getEvents().get(2).getTime().getEndAll());
 	}
+	public void testOccasionJsonParser() throws Exception{
+		occasionTest.getEvents().add(new Event("test name", "test loc", "test desc", "102120162100", "102320161300"));
+		assertEquals("{\"oname\":\"YCPHacks\",\"olocation\":\"Yorktowne Hotel\",\"startSource\":\"102220160530\",\"endSource\":\"112120170700\",\"events\":[{\"name\":\"test name\",\"description\":\"test desc\",\"location\":\"test loc\",\"startSource\":\"102120162100\",\"endSource\":\"102320161300\"}]}", occasionTest.toJSON());
+	}
 	
 }
