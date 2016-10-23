@@ -1,8 +1,18 @@
-.page-header {
+/* Styling sheet by Smitty for YCPHacks Hackathon 10/21 - 10/23 */
+
+body {
   color: #fff;
   text-align: center;
   background-color: #159957;
-  background-image: linear-gradient(120deg, #155799, #159957); 
+  background-image: linear-gradient(120deg, #155799, #159957);  
+}
+
+.page-header {
+  text-align: center;
+}
+
+.main-content {
+	height: 100vh;
 }
   
 thead {
@@ -19,4 +29,20 @@ thead {
 tbody {
     height: 100px;
     overflow-y: auto;
+}
+
+.occasion-info {
+	text-align: center;
+	margin: auto;
+	width: 50%;
+	bottom-padding: 5px;
+}
+
+.welcome {
+	
+}
+
+.occasion-submit {
+	text-align:center;
+	margin:auto;
 }

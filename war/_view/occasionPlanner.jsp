@@ -16,7 +16,7 @@
 		</section>
 		
 		<div class="occasion-info">
-			<h3 class="welcome">Welcome Event Organizers!</h3>
+			<h3 class="welcome">Welcome Occasion Organizers!</h3>
 			
 			<p>
 			Planning an occasion and want there to be an easy to use interface for your various events? Then
@@ -28,7 +28,7 @@
 		</div>
 		
 		<form action="${pageContext.servletContext.contextPath}/OccasionPlanner" method="post">
-			<section class="main-content">
+			<div class="main-content">
 				
 				
 				<table class="occasion-input">
@@ -105,9 +105,11 @@
 					</tbody>
 				</table>
 				
-				<input type="submit" value="Submit" />				
-			
-			</section>
+				<div class="occasion-submit">
+					<input type="submit" value="Submit" />				
+				</div>
+				
+			</div>
 		</form>
 	</body>
 </html>
