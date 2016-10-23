@@ -5,7 +5,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TimeDate {
-	private Date startDate;
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    private Date startDate;
 	private Date endDate;
 	private SimpleDateFormat formatTime;
 	private String startSource;
