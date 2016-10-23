@@ -74,10 +74,10 @@ public class EventPlannerServlet extends HttpServlet {
 		ApkBuilder builder = new ApkBuilder();
 		try {
 			builder.generateAndSignApk(occasion.getName());
+			req.setAttribute("apkFilePath", builder.getApkFilePath());
+			req.getRequestDispatcher("_view/DownloadApk.jsp").forward(req, resp);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			req.setAttribute("errorMsg", e.getStackTrace());
 		}
-		
 	}
 }

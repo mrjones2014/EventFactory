@@ -137,7 +137,6 @@ public class OccasionActivity extends AppCompatActivity {
     @TargetApi(23)
     public void scheduleNotification(Date dateTime, String title, String message)
     {
-
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
         alarmIntent.putExtra("message", message);
         alarmIntent.putExtra("title", title);

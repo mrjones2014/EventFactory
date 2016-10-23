@@ -9,7 +9,14 @@ import java.security.GeneralSecurityException;
 import kellinwood.security.zipsigner.ZipSigner;
 
 public class ApkBuilder {
-	public ApkBuilder() {}
+	private String apkFilePath;
+	public ApkBuilder() {
+		apkFilePath = "";
+	}
+	
+	public String getApkFilePath(){
+		return apkFilePath;
+	}
 	
 	public void generateAndSignApk(String appName) throws Exception{
 		Runtime rt = Runtime.getRuntime();
@@ -30,6 +37,8 @@ public class ApkBuilder {
 		if(!accum.contains("SUCCESSFUL") && !accum.contains("successful")) throw new Exception("Build failed; trace: \n" + accum);
 		
 		try{ signAPK(appName); } catch(Throwable t) { t.printStackTrace(); }
+		
+		apkFilePath = this.getClass().getResource("/apk_templates/$app_name/app/build/outputs/apk/" + appName + "-signed.apk").getPath();
 	}
 	
 	private void signAPK(String appName) throws ClassNotFoundException, IllegalAccessException, InstantiationException, IOException, GeneralSecurityException {
