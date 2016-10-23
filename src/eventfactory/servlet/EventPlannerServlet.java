@@ -64,10 +64,11 @@ public class EventPlannerServlet extends HttpServlet {
 			}
 		}
 		String JSON = occasion.toJSON();
-		File f = new File("apk_templates/$app_name/JSON.json");
+		File f = new File("apk_templates/$app_name/app/src/main/assets/JSON.json");
 		//File f = new File("JSON.json");
 		FileWriter file = new FileWriter(f);
 		file.write(JSON);
+		file.flush();
 		file.close();
 	}
 }
