@@ -33,7 +33,6 @@ public class EventPlannerServlet extends HttpServlet {
 				Event event = new Event(name, location, description, startDate+startTime, endDate+endTime);
 				req.getSession().setAttribute("event", event);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	}
