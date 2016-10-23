@@ -80,7 +80,8 @@
 				
 				<input type="submit" value="Submit" />
 				<input id="add-event" type="button" value="Add Event" onclick="eventAdder();"/>
-			
+				<p id="num-row" name="num-row" hidden="true">1</p>
+				
 			</section>
 		</form>
 		
@@ -90,18 +91,23 @@
 		tbody = table.getElementsByTagName("tbody")[0],
 		clone = tbody.rows[0].cloneNode(true);
 		
+		var rowCounter = parseInt(document.getElementById("num-row").innerHTML);
+		
 		function eventAdder() {
 		    var new_row = updateRow(clone.cloneNode(true), ++tbody.rows.length, true);
 		    tbody.appendChild(new_row);
+		    
+		    rowCounter = rowCounter + 1;
 		    return;
 		}
 		
 		function updateRow(row, len, reset) {
 				var inputField = [];
 			
-				for (var i =0; i< inputField.length; i++) {
-					inputField[i] = row.cells[i].getElementsByTagName('input')[0];
-					inputField[i].id = row.cells[i].id + len;
+				for (var i =0; i< 6; i++) {
+					inputField[i] = row.cells[i];
+					
+					/* inputField[i].id = inputField[i].id + rowCounter; */
 					
 					if(reset) {
 						inputField[i].value = '';
@@ -117,6 +123,7 @@
 	        updateRow(table.rows[i], i, false);
 	        i++;
 	  	}
+	    rowCounter = rowCounter - 1;
 	    return;
 		}
 		
