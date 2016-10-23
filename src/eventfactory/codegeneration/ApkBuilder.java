@@ -18,8 +18,6 @@ public class ApkBuilder {
 		BufferedReader stdInput = new BufferedReader(new 
 		     InputStreamReader(proc.getInputStream()));
 
-		BufferedReader stdError = new BufferedReader(new 
-		     InputStreamReader(proc.getErrorStream()));
 		String accum = "";
 		String s = null;
 		while ((s = stdInput.readLine()) != null) {

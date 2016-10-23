@@ -20,7 +20,7 @@ public class Occasion {
 		this.olocation = location;
 		otime.setStartDate(startSource);
 		otime.setEndDate(endSource);
-		this.odescription = description;
+		this.setOdescription(description);
 		//time.setStartDate("102120162100");
 		//time.setEndDate("102320161300");
 	}
@@ -64,5 +64,11 @@ public class Occasion {
 		accumulator=accumulator.concat("}");
 		
 		return accumulator;
+	}
+	public String getOdescription() {
+		return odescription;
+	}
+	public void setOdescription(String odescription) {
+		this.odescription = odescription;
 	}
 }

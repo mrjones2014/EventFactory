@@ -18,5 +18,8 @@ public class ApplicationModel {
 		this.occasion = occasion;
 	}
 	
+	public Occasion getOccasion(){
+		return occasion;
+	}
 	
 }
