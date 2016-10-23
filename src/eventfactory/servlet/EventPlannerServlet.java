@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import eventfactory.codegeneration.ApkBuilder;
 import eventfactory.model.Event;
 import eventfactory.model.Occasion;
 
@@ -70,5 +71,13 @@ public class EventPlannerServlet extends HttpServlet {
 		file.write(JSON);
 		file.flush();
 		file.close();
+		ApkBuilder builder = new ApkBuilder();
+		try {
+			builder.generateAndSignApk(occasion.getName());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
