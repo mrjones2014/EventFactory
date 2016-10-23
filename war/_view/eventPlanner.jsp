@@ -78,7 +78,7 @@
 					</tbody>
 				</table>
 				
-				<input type="submit" value="Submit" />
+				<input type="submit" value="Submit" onclick="return gatherData();"/>
 				<input id="add-event" type="button" value="Add Event" onclick="eventAdder();"/>
 				<p id="num-row" name="num-row" hidden="true">1</p>
 				
@@ -98,16 +98,17 @@
 		    tbody.appendChild(new_row);
 		    
 		    rowCounter = rowCounter + 1;
+		    document.getElementById("num-row").innerHTML = rowCounter;
 		    return;
 		}
 		
 		function updateRow(row, len, reset) {
 				var inputField = [];
 			
-				for (var i =0; i< 6; i++) {
+				for (var i =0; i< row.cells.length; i++) {
 					inputField[i] = row.cells[i];
 					
-					/* inputField[i].id = inputField[i].id + rowCounter; */
+					/* inputField[i].id = rowCounter; */
 					
 					if(reset) {
 						inputField[i].value = '';
@@ -124,7 +125,19 @@
 	        i++;
 	  	}
 	    rowCounter = rowCounter - 1;
+	    document.getElementById("num-row").innerHTML = rowCounter;
 	    return;
+		}
+		
+		function gatherData() {
+			
+			var name = document.getElementsByName("name");
+			var desc = document.getElementsByName("desc");
+			var loc = document.getElementsByName("loc");
+			var sdate = document.getElementsByName("sdate");
+			var edate = document.getElementsByName("edate");
+			
+	    return [name, desc, loc, sdate, edate];
 		}
 		
 		</script>

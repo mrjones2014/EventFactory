@@ -21,19 +21,19 @@ public class EventPlannerServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			String name = req.getParameter("name");
-			String location = req.getParameter("loc");
-			String startDate = req.getParameter("sdate");
-			String startTime = req.getParameter("stime");
-			String endDate = req.getParameter("edate");
-			String endTime  = req.getParameter("etime");
-			String description = req.getParameter("desc");
 			
-			try {
-				Event event = new Event(name, location, description, startDate+startTime, endDate+endTime);
-				req.getSession().setAttribute("event", event);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+		String name = req.getParameter("name");
+		String location = req.getParameter("loc");
+		String startDate = req.getParameter("sdate");
+		String endDate = req.getParameter("edate");
+		String description = req.getParameter("desc");
+		
+		try {
+			Event event = new Event(name, location, description, startDate, endDate);
+			req.getSession().setAttribute("event", event);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	
 	}
 }

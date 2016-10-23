@@ -52,10 +52,6 @@
 							<th>
 								<label>Accent Color</label>
 							</th>
-							
-							<th>
-								<label>Total Number of Events</label>
-							</th>
 						</tr>
 					</thead>
 					
@@ -91,10 +87,6 @@
 							
 							<td>
 								<input type="color" name="ocolor3" required>
-							</td>
-							
-							<td>
-								<input type="number" name="oevents" required>
 							</td>
 						</tr>
 					</tbody>

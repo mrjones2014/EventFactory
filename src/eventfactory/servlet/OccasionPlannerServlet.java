@@ -28,7 +28,6 @@ public class OccasionPlannerServlet extends HttpServlet {
 			String endDate = req.getParameter("oedate");
 			String endTime  = req.getParameter("oetime");
 			String description = req.getParameter("odescription");
-			String eventCount = req.getParameter("oevents");
 			
 			try {
 				Occasion occasion = new Occasion(name, location, description, startDate+startTime, endDate+endTime);
