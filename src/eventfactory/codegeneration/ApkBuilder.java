@@ -21,11 +21,10 @@ public class ApkBuilder {
 	
 	public void generateAndSignApk(String appName) throws Exception{
 		Runtime rt = Runtime.getRuntime();
-		String gradlewBat = "apk_templates/$app_name/gradlew.bat";
+		String gradlewBat = "buildApp.bat";
 		
-		String[] commands = {"gradlew.bat", "assembleRelease"};
-		//Process proc = rt.exec(commands, null, new File(new File("apk_templates/$app_name/").getAbsolutePath()));
-		Process proc = rt.exec(new String[] {"cmd.exe", "/c", "\"apk_templates/$app_name/gradlew.bat\""});
+		String[] commands = {gradlewBat, };
+		Process proc = rt.exec(commands);
 
 		BufferedReader stdInput = new BufferedReader(new 
 		     InputStreamReader(proc.getInputStream()));
@@ -44,26 +43,27 @@ public class ApkBuilder {
 		}
 
 		if(!accum.contains("SUCCESSFUL") && !accum.contains("successful")) throw new Exception("Build failed; trace: \n" + accum + "\n" + accum2);
+		String signedApkPath = "";
+		try{ signedApkPath = signAPK(appName); } catch(Throwable t) { t.printStackTrace(); }
 		
-		try{ signAPK(appName); } catch(Throwable t) { t.printStackTrace(); }
-		
-		apkFilePath = this.getClass().getResource("/apk_templates/$app_name/app/build/outputs/apk/" + appName + "-signed.apk").getPath();
+		apkFilePath = signedApkPath.replace("war/", "");
 	}
 	
-	private void signAPK(String appName) throws ClassNotFoundException, IllegalAccessException, InstantiationException, IOException, GeneralSecurityException {
-    	String apkDir = this.getClass().getResource("/apk_templates/$app_name/app/build/outputs/apk/").getPath();
-        String generatedApkPath = apkDir + appName + ".apk";
+	private String signAPK(String appName) throws ClassNotFoundException, IllegalAccessException, InstantiationException, IOException, GeneralSecurityException {
+    	String apkDir = "apk_templates/$app_name/app/build/outputs/apk/";
+        String generatedApkPath = apkDir + "app-release-unsigned.apk";
 
-        String signedApkPath = apkDir + appName + "-signed.apk";
+        String signedApkPath = "war/" + appName + "-signed.apk";
 
         ZipSigner zipSigner = null;
         zipSigner = new ZipSigner();
 
-        zipSigner.setKeymode(ZipSigner.MODE_AUTO);
+        zipSigner.setKeymode(ZipSigner.KEY_NONE);
 
         zipSigner.signZip(generatedApkPath, signedApkPath);
 
         // After signing apk , delete unsigned apk
         new File(generatedApkPath).delete();
+        return signedApkPath;
 	}
 }
