@@ -12,7 +12,9 @@ public class ApkBuilder {
 	
 	public void generateAndSignApk(String appName) throws Exception{
 		Runtime rt = Runtime.getRuntime();
-		String[] commands = {"system.exe","-get t"};
+		String gradlewBat = this.getClass().getResource("/apk_templates/$app_name/gradlew.bat").getPath();
+		
+		String[] commands = {gradlewBat + " assembleRelease"};
 		Process proc = rt.exec(commands);
 
 		BufferedReader stdInput = new BufferedReader(new 

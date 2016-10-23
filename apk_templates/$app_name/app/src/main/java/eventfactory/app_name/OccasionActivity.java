@@ -1,5 +1,11 @@
 package eventfactory.app_name;
 
+import android.annotation.TargetApi;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TableLayout;
@@ -11,6 +17,7 @@ import org.json.JSONObject;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.MissingResourceException;
 
 public class OccasionActivity extends AppCompatActivity {
@@ -85,5 +92,20 @@ public class OccasionActivity extends AppCompatActivity {
         } else if(hour == 12) isAm = false;
 
         return isAm ? hour + ":" + new DecimalFormat("00").format(minute) + "AM" : hour + ":" + new DecimalFormat("00").format(minute) + "PM";
+    }
+
+    @TargetApi(23)
+    public void Remind (Date dateTime, String title, String message)
+    {
+
+        Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+        alarmIntent.putExtra("message", message);
+        alarmIntent.putExtra("title", title);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(AlarmManager.class);
+
+        //TODO: For demo set after 5 seconds.
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME, dateTime.getTime(), pendingIntent);
     }
 }
