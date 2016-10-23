@@ -13,6 +13,7 @@ body {
 
 .main-content {
 	height: 100vh;
+	align: center;
 }
   
 thead {
@@ -21,9 +22,11 @@ thead {
 	cell-padding: 4px;
 }
 
-.occasion-input {
+.user-input {
 	text-align: center;
 	border: 1px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 tbody {
@@ -39,7 +42,7 @@ tbody {
 }
 
 .welcome {
-	
+	border: 0px;
 }
 
 .occasion-submit {

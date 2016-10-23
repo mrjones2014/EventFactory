@@ -31,7 +31,7 @@
 			<div class="main-content">
 				
 				
-				<table class="occasion-input">
+				<table class="user-input">
 					<thead>
 						<tr>
 							<th>
@@ -75,7 +75,7 @@
 							</td>
 							
 							<td>
-								<input type="text" name="odescription" required>
+								<textarea cols="20" rows="2" name="odescription" id="odescription" ></textarea>
 							</td>
 							
 							<td>
@@ -83,11 +83,11 @@
 							</td>
 							
 							<td>
-								<input type="datetime-local" name="osdate" required>
+								<input type="datetime-local" name="osdate" max=2222-12-30T00:00:00.00 min=2016-10-10T00:00:00.00 required>
 							</td>
 							
 							<td>
-								<input type="datetime-local" name="oedate" required>
+								<input type="datetime-local" name="oedate" max=2222-12-30T00:00:00.00 min=2016-10-10T00:00:00.00 required>
 							</td>
 							
 							<td>

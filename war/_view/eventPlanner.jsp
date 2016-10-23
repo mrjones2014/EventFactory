@@ -23,7 +23,7 @@
 			<section class="main-content">
 				
 				
-				<table class="event-input" id="event-input">
+				<table class="user-input">
 					<thead>
 						<tr>
 							<th>
@@ -71,11 +71,11 @@
 							</td>
 							
 							<td>
-								<input type="datetime-local" name="sdate" id="sdate" required>
+								<input type="datetime-local" name="sdate" id="sdate" max=2222-12-30T00:00:00.00 min=2016-10-10T00:00:00.00 required>
 							</td>
 							
 							<td>
-								<input type="datetime-local" name="edate" id="edate" required>
+								<input type="datetime-local" name="edate" id="edate" max=2222-12-30T00:00:00.00 min=2016-10-10T00:00:00.00 required>
 							</td>
 							
               <td>
