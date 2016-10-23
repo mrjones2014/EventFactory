@@ -2,6 +2,7 @@ package eventfactory.servlet;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,9 +29,19 @@ public class OccasionPlannerServlet extends HttpServlet {
 			String endDate = req.getParameter("oedate");
 			String endTime  = req.getParameter("oetime");
 			String description = req.getParameter("odescription");
-			
+			int count = 0;
+			while(true)
+			{
+				count++;
+				if(startDate.charAt(count) == 'T')
+				{
+					break;
+				}
+			}
 			try {
-				Occasion occasion = new Occasion(name, location, description, startDate+startTime, endDate+endTime);
+				startTime = startDate.substring(count - 2, count) + startDate.substring(count - 5, count - 3) + startDate.substring(0, count-6) + startDate.substring(count + 1, count + 3) + startDate.substring(count + 4, count + 6);
+				endTime = endDate.substring(count - 2, count) + endDate.substring(count - 5, count - 3) + endDate.substring(0, count-6) + endDate.substring(count + 1, count + 3) + endDate.substring(count + 4, count + 6);
+				Occasion occasion = new Occasion(name, location, description, startTime, endTime);
 				req.getSession().setAttribute("occasion", occasion);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
